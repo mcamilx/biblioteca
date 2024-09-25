@@ -276,6 +276,65 @@ public class Biblioteca{
 
     //Bibliotecario
 
+    public Bibliotecario nuevomapaBibliotecario(String nombre, String cedula, String telefono, String correo, int salario){
+        Bibliotecario nuevoBibliotecario = new Bibliotecario(nombre, cedula, telefono, correo, salario);
+        return nuevoBibliotecario;
+    }
+
+    public String crearBibliotecario(Bibliotecario nuevoBibliotecario){
+        String mensaje = "";
+        Bibliotecario bibliotecarioEncontrado = null;
+        
+        bibliotecarioEncontrado = buscarBibliotecario(nuevoBibliotecario.getCedula());
+
+            if (bibliotecarioEncontrado != null){
+                mensaje = "\n El bibliotecario ya se encuentra registrado";
+            }else{
+                mapaBibliotecarios.put(nuevoBibliotecario.getCedula(), nuevoBibliotecario);
+                mensaje = "\nEl bibliotecario se ha registrado de manera exitosa";
+            }
+            return mensaje;
+    }
+
+    public Bibliotecario buscarBibliotecario(String cedula){
+        Bibliotecario bibliotecarioEncontrado = null;
+
+        for (String cedulaAux : mapaBibliotecarios.keySet()) {
+            Bibliotecario bibliotecarioAux = mapaBibliotecarios.get(cedulaAux);
+            if(bibliotecarioAux!=null){
+                if(bibliotecarioAux.getCedula().equals(cedula)){
+                    bibliotecarioEncontrado = bibliotecarioAux;
+                    return bibliotecarioEncontrado;
+                }
+            }
+        }
+        return bibliotecarioEncontrado;
+    }
+
+
+    public String eliminarBibliotecario(String cedula){
+        String mensaje = "\nEl bibliotecario no esta registrado";
+
+        for (String cedulaAux : mapaBibliotecarios.keySet()) {
+            Bibliotecario bibliotecarioAux = mapaBibliotecarios.get(cedulaAux);
+            if(bibliotecarioAux!=null){
+                if(bibliotecarioAux.getCedula().equals(cedula)){
+                    mapaBibliotecarios.remove(bibliotecarioAux.getCedula(), bibliotecarioAux);
+                    mensaje = "\nEl Bibliotecario ha sido registrado de manera exitosa";
+                    return mensaje;
+                }
+            }
+        }
+        return mensaje;
+    }
+
+    public String actualizarBibliotecario(String nombre, String cedula, String telefono, String correo, int salario, Bibliotecario bibliotecarioEncontrado){
+        Bibliotecario nuevoBibliotecario = new Bibliotecario(nombre, cedula, telefono, correo, salario);
+        mapaBibliotecarios.put(bibliotecarioEncontrado.getCedula(), nuevoBibliotecario);
+        String mensaje = "\nBibliotecario actualizado";
+        return mensaje;
+    }
+
 
 
 
