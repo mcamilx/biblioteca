@@ -9,9 +9,10 @@ public class Prestamo {
     private LocalDate fechaPrestamo;
 
     public Prestamo(String codigo, LocalDate fechaEntrega, LocalDate fechaPrestamo){
-        this.codigo = codigo;
+        this.codigo = codigo; 
         this.fechaEntrega = fechaEntrega;
         this.fechaPrestamo = fechaPrestamo;
+        assert !codigo.isBlank();
     }
 
     public String getCodigo() {

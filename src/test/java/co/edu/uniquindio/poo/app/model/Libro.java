@@ -18,6 +18,12 @@ public class Libro {
         this.titulo = titulo;
         this.editorial = editorial;
         this.fecha = fecha;
+        assert !codigo.isBlank();
+        assert !isbn.isBlank();
+        assert !autor.isBlank();
+        assert !titulo.isBlank();
+        assert !editorial.isBlank();
+        
     }
 
     public String getCodigo() {
@@ -73,7 +79,20 @@ public class Libro {
         return "Libro [codigo=" + codigo + ", isbn=" + isbn + ", autor=" + autor + ", titulo=" + titulo + ", editorial="
                 + editorial + ", fecha=" + fecha + "]";
     }
-    
-    
-    
+
+    public boolean tituloVocal(){
+        String titulo = getTitulo().toLowerCase();
+        boolean verficiacion = false;
+        if (titulo.charAt(0) == 'a' || titulo.charAt(0) == 'e' || titulo.charAt(0) == 'i' || titulo.charAt(0) == 'o' || titulo.charAt(0) == 'u' ){
+            verficiacion = true;
+        }
+        return verficiacion;
+    }
+        
+
+
 }
+    
+    
+    
+

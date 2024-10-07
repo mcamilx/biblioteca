@@ -139,12 +139,15 @@ public class Biblioteca{
     //Estudiante
 
 
-    public Estudiante nuevoEstudiante(String nombre, String cedula, String telefono, String correo){
+    public static Estudiante nuevoEstudiante(String nombre, String cedula, String telefono, String correo){
         Estudiante nuevoEstudiante = new Estudiante(nombre, cedula, telefono, correo);
         return nuevoEstudiante;
     }
 
-    public String crearEstudiante (Estudiante nuevoEstudiante){
+    public String crearEstudiante (Estudiante nuevoEstudiante) throws Exception{
+        if(nuevoEstudiante == null){
+            throw new Exception("Error datos nulos");
+        }
         String mensaje = "";
         Estudiante estudianteEncontrado = null;
 
@@ -335,6 +338,11 @@ public class Biblioteca{
         return mensaje;
     }
 
+    
+
+
+}
+
 
 
 
@@ -342,7 +350,7 @@ public class Biblioteca{
     
 
 
-}
+
 
 
 
